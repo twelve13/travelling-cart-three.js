@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Travelling Cart</title>
+</head>
+<body>
+	<script src="three.js"></script>
+	<script>
+		var scene = new THREE.Scene();
+		scene.background = new THREE.Color(0xf0f0f0);
+		//(field of view in degrees, aspect ratio, near clipping pane, far clipping pane)
+		var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+		var renderer = new THREE.WebGLRenderer();
+		renderer.setSize(window.innerWidth, window.innerHeight);
+		document.body.appendChild(renderer.domElement);
+
+		//(width, height, depth)
+		var rectangle1 = new THREE.BoxGeometry(3.6, 1.5, 1);
+		var rectangle1Material = new THREE.MeshLambertMaterial({color: 0x750f41});
+		var cabin = new THREE.Mesh(rectangle1, rectangle1Material);
+
+		var rectangle2 = new THREE.BoxGeometry(1, 1, 0.2);
+		var rectangle2Material = new THREE.MeshLambertMaterial({color: 0xac234e});
+		var cabinWindow = new THREE.Mesh(rectangle2, rectangle2Material);
+		cabinWindow.position.z = 0.5;
+
+		var rectangle3 = new THREE.BoxGeometry(0.8, 0.8, 0.21);
+		var rectangle3Material = new THREE.MeshBasicMaterial({color: 0x000000});
+		var windowInterior = new THREE.Mesh(rectangle3, rectangle3Material);
+		windowInterior.position.z = 0.5;
+
+		var lineMaterial = new THREE.LineBasicMaterial({color: 0x31052b});
+
+		var points = [new THREE.Vector3(-1.5, -.72, .5), new THREE.Vector3(-1.5, .72, .5)];
+
+		var lineGeometry = new THREE.BufferGeometry().setFromPoints(points);
+
+		var line1 = new THREE.Line(lineGeometry, lineMaterial);
+		var line2 = new THREE.Line(lineGeometry, lineMaterial);
+		var line3 = new THREE.Line(lineGeometry, lineMaterial);
+		var line4 = new THREE.Line(lineGeometry, lineMaterial);
+		var line5 = new THREE.Line(lineGeometry, lineMaterial);
+		var line6 = new THREE.Line(lineGeometry, lineMaterial);
+		var line7 = new THREE.Line(lineGeometry, lineMaterial);
+
+		line2.position.x = .5;
+		line3.position.x = 1;
+		line4.position.x = 1.5;
+		line5.position.x = 2;
+		line6.position.x = 2.5;
+		line7.position.x = 3;
+
+		var sphere = new THREE.SphereGeometry(0.15, 25, 25);
+		var sphereMaterial = new THREE.MeshLambertMaterial({color: 0xac234e});
+
+		var ironworksSphereLeft = new THREE.Mesh (sphere, sphereMaterial);
+		ironworksSphereLeft.position.x = -1.75;
+		ironworksSphereLeft.position.z = 0.5;
+		
+		var ironworksSphereRight = new THREE.Mesh (sphere, sphereMaterial);
+		ironworksSphereRight.position.x = 1.75;
+		ironworksSphereRight.position.z = 0.5;
+
+		var ironworksSphereLeftBack = new THREE.Mesh (sphere, sphereMaterial);
+		ironworksSphereLeftBack.position.x = -1.75;
+		ironworksSphereLeftBack.position.z = -0.5;
+
+		var ironworksSphereRightBack = new THREE.Mesh (sphere, sphereMaterial);
+		ironworksSphereRightBack.position.x = 1.75;
+		ironworksSphereRightBack.position.z = -0.5;
+
+		//(radius, tube radius, radialSegments, tubularSegments)
+		var torus = new THREE.TorusGeometry(.14,.06, 8, 8);
+		var torusMaterial = new THREE.MeshLambertMaterial({color: 0xac234e});
+
+		var ironworksTorusTopLeft = new THREE.Mesh(torus, torusMaterial);
+		ironworksTorusTopLeft.position.set(-1.9, .6, 0.55); // (x, y, z)
+
+		var ironworksTorusBottomLeft = new THREE.Mesh(torus, torusMaterial);
+		ironworksTorusBottomLeft.position.set(-1.9, -.6, 0.55);
+
+		var ironworksTorusTopRight = new THREE.Mesh(torus, torusMaterial);
+		ironworksTorusTopRight.position.set(1.9, .6, 0.55);
+
+		var ironworksTorusBottomRight = new THREE.Mesh(torus, torusMaterial);
+		ironworksTorusBottomRight.position.set(1.9, -.6, 0.55);
+
+		var ironworksTorusTopLeftBack = new THREE.Mesh(torus, torusMaterial);
+		ironworksTorusTopLeftBack.position.set(-1.9, .6, -0.55); // (x, y, z)
+
+		var ironworksTorusBottomLeftBack = new THREE.Mesh(torus, torusMaterial);
+		ironworksTorusBottomLeftBack.position.set(-1.9, -.6, -0.55);
+
+		var ironworksTorusTopRightBack = new THREE.Mesh(torus, torusMaterial);
+		ironworksTorusTopRightBack.position.set(1.9, .6, -0.55);
+
+		var ironworksTorusBottomRightBack = new THREE.Mesh(torus, torusMaterial);
+		ironworksTorusBottomRightBack.position.set(1.9, -.6, -0.55);
+
+		//(radiusTop, radiusBottom, height, radialSegments)
+		var cylinder = new THREE.CylinderGeometry(.06, .06, .4, 30);
+
+		var ironworksArmTopLeft = new THREE.Mesh(cylinder, torusMaterial);
+		ironworksArmTopLeft.rotateZ(.2);
+		ironworksArmTopLeft.position.set(-1.8, 0.3, 0.55);
+
+		var ironworksArmBottomLeft = new THREE.Mesh(cylinder, torusMaterial);
+		ironworksArmBottomLeft.rotateZ(-.2);
+		ironworksArmBottomLeft.position.set(-1.8, -0.3, 0.55);
+
+		var ironworksArmTopRight = new THREE.Mesh(cylinder, torusMaterial);
+		ironworksArmTopRight.rotateZ(-.2);
+		ironworksArmTopRight.position.set(1.8, 0.3, 0.55);
+
+		var ironworksArmBottomRight = new THREE.Mesh(cylinder, torusMaterial);
+		ironworksArmBottomRight.rotateZ(.2);
+		ironworksArmBottomRight.position.set(1.8, -0.3, 0.55);
+
+		var ironworksArmTopLeftBack = new THREE.Mesh(cylinder, torusMaterial);
+		ironworksArmTopLeftBack.rotateZ(.2);
+		ironworksArmTopLeftBack.position.set(-1.8, 0.3, -0.55);
+
+		var ironworksArmBottomLeftBack = new THREE.Mesh(cylinder, torusMaterial);
+		ironworksArmBottomLeftBack.rotateZ(-.2);
+		ironworksArmBottomLeftBack.position.set(-1.8, -0.3, -0.55);
+
+		var ironworksArmTopRightBack = new THREE.Mesh(cylinder, torusMaterial);
+		ironworksArmTopRightBack.rotateZ(-.2);
+		ironworksArmTopRightBack.position.set(1.8, 0.3, -0.55);
+
+		var ironworksArmBottomRightBack = new THREE.Mesh(cylinder, torusMaterial);
+		ironworksArmBottomRightBack.rotateZ(.2);
+		ironworksArmBottomRightBack.position.set(1.8, -0.3, -0.55);
+
+		var ironworksArmCenterLeft = new THREE.Mesh(cylinder, torusMaterial);
+		ironworksArmCenterLeft.position.set(-0.6, 0, 0.55);
+
+		var ironworksArmCenterRight = new THREE.Mesh(cylinder, torusMaterial);
+		ironworksArmCenterRight.position.set(0.6, 0, 0.55);
+
+		var cylinderMedium = new THREE.CylinderGeometry(.06, .06, 1.1, 30);
+
+		var ironworksArmHorizontalLeft = new THREE.Mesh(cylinderMedium, torusMaterial);
+		ironworksArmHorizontalLeft.rotateZ(1.57);
+		ironworksArmHorizontalLeft.position.set(-1.2, 0, 0.55);
+
+		var ironworksArmHorizontalRight = new THREE.Mesh(cylinderMedium, torusMaterial);
+		ironworksArmHorizontalRight.rotateZ(1.57);
+		ironworksArmHorizontalRight.position.set(1.2, 0, 0.55);
+
+		var cylinderLong = new THREE.CylinderGeometry(.06, .06, 3.5, 30);
+
+		var ironworksArmHorizontalBack = new THREE.Mesh(cylinderLong, torusMaterial);
+		ironworksArmHorizontalBack.rotateZ(1.57);
+		ironworksArmHorizontalBack.position.set(0, 0, -.55);
+
+		var rectangle4 = new THREE.BoxGeometry(3.6, .12, 1);
+		var rectangle4Material = new THREE.MeshLambertMaterial({color: 0x31ac81});
+		var roofbase = new THREE.Mesh(rectangle4, rectangle4Material);
+		roofbase.position.y = 0.82;
+
+		var cylinderLarge = new THREE.CylinderGeometry(.75, .75, 3.5, 30);
+		var rooftop = new THREE.Mesh(cylinderLarge, rectangle4Material);
+		rooftop.rotateZ(1.57);
+		rooftop.position.set(0, 1.43, 0);
+
+		cabin.add(cabinWindow);
+		cabin.add(windowInterior);
+		cabin.add(line1);
+		cabin.add(line2);
+		cabin.add(line3);
+		cabin.add(line4);
+		cabin.add(line5);
+		cabin.add(line6);
+		cabin.add(line7);
+		cabin.add(ironworksSphereLeft);
+		cabin.add(ironworksSphereRight);
+		cabin.add(ironworksSphereLeftBack);
+		cabin.add(ironworksSphereRightBack);
+		cabin.add(ironworksTorusTopLeft);
+		cabin.add(ironworksTorusBottomLeft);
+		cabin.add(ironworksTorusTopRight);
+		cabin.add(ironworksTorusBottomRight);
+		cabin.add(ironworksTorusTopLeftBack);
+		cabin.add(ironworksTorusBottomLeftBack);
+		cabin.add(ironworksTorusTopRightBack);
+		cabin.add(ironworksTorusBottomRightBack);
+		cabin.add(ironworksArmTopLeft);
+		cabin.add(ironworksArmBottomLeft);
+		cabin.add(ironworksArmTopRight);
+		cabin.add(ironworksArmBottomRight);
+		cabin.add(ironworksArmTopLeftBack);
+		cabin.add(ironworksArmBottomLeftBack);
+		cabin.add(ironworksArmTopRightBack);
+		cabin.add(ironworksArmBottomRightBack);
+		cabin.add(ironworksArmCenterLeft);
+		cabin.add(ironworksArmCenterRight);
+		cabin.add(ironworksArmHorizontalLeft);
+		cabin.add(ironworksArmHorizontalRight);
+		cabin.add(ironworksArmHorizontalBack);
+		cabin.add(roofbase);
+		cabin.add(rooftop);
+
+
+		// var directionalLight = new THREE.DirectionalLight(0xffffff, 0.1);
+		// scene.add(directionalLight);
+
+		var light = new THREE.PointLight( 0xffffff, 1, 100 );
+		light.position.set( 5, 50, 50 );
+		scene.add( light );
+
+		var spotLight1 = new THREE.SpotLight(0xffffff);
+		spotLight1.position.set(200, 400, 300);
+		scene.add(spotLight1);
+
+		var spotLight2 = new THREE.SpotLight(0xffffff);
+		spotLight2.position.set(0, 350, 300);
+		scene.add(spotLight2);
+
+		scene.add(cabin); // default added at position 0,0,0
+		//cabin.rotation.y = -3.2;
+		// cabin.rotation.y = -0.6;
+		camera.position.z = 5;
+
+		function animate() {
+			requestAnimationFrame(animate);
+			// cabin.rotation.x += 0.01;
+			// cabin.rotation.y += 0.01;
+			renderer.render(scene, camera);
+		}
+
+		animate();
+	</script> 
+</body>
+</html>
