@@ -202,6 +202,124 @@
 		cabinBack.rotateY(1.57);
 		cabinBack.position.set(1.75, 0, 0);
 
+		var sphereTiny = new THREE.SphereGeometry(0.07, 15, 15);
+		var sphereWhiteMaterial = new THREE.MeshLambertMaterial({color: 0xffffff});
+		var light1 = new THREE.Mesh(sphereTiny, sphereWhiteMaterial);
+		light1.position.set(-1.6, .65, .55);
+
+		var light2 = new THREE.Mesh(sphereTiny, rectangle5Material);
+		light2.position.set(-1.3, .55, .55);
+
+		var sphereBlueMaterial = new THREE.MeshLambertMaterial({color: 0x76e0ea});
+		var light3 = new THREE.Mesh(sphereTiny, sphereBlueMaterial);
+		light3.position.set(-1, .63, .55);
+
+		var sphereYellowMaterial = new THREE.MeshLambertMaterial({color: 0xec9b22});
+		var light4 = new THREE.Mesh(sphereTiny, sphereYellowMaterial);
+		light4.position.set(-.7, .54, .55);
+
+		var sphereRedMaterial = new THREE.MeshLambertMaterial({color: 0xdc322f});
+		var light5 = new THREE.Mesh(sphereTiny, sphereRedMaterial);
+		light5.position.set(-.4, .64, .55);
+
+		var light6 = new THREE.Mesh(sphereTiny, sphereWhiteMaterial);
+		light6.position.set(-.1, .65, .55);
+
+		var light7 = new THREE.Mesh(sphereTiny, rectangle5Material);
+		light7.position.set(.2, .59, .55);
+
+		var light8 = new THREE.Mesh(sphereTiny, sphereBlueMaterial);
+		light8.position.set(.5, .63, .55);
+
+		var light9 = new THREE.Mesh(sphereTiny, sphereYellowMaterial);
+		light9.position.set(.8, .54, .55);
+
+		var light10 = new THREE.Mesh(sphereTiny, sphereRedMaterial);
+		light10.position.set(1.1, .64, .55);
+
+		var light11 = new THREE.Mesh(sphereTiny, sphereWhiteMaterial);
+		light11.position.set(1.35, .65, .55);
+
+		var light12 = new THREE.Mesh(sphereTiny, rectangle5Material);
+		light12.position.set(1.6, .59, .55);
+
+		var dkgreenMaterial = new THREE.LineBasicMaterial({color: 0x1c5c10});
+
+		var cylinderThin = new THREE.CylinderGeometry(.02, .02, 3.5, 30);
+		var cordLine = new THREE.Mesh(cylinderThin, dkgreenMaterial);
+		cordLine.rotateZ(1.57);
+		cordLine.position.set(0, .6, .55);
+
+		var cylinderLongest = new THREE.CylinderGeometry(.06, .06, 4.7, 30);
+
+		var ltbrownMaterial = new THREE.MeshLambertMaterial({color: 0x5e3517});
+		var wheelsBar1 = new THREE.Mesh(cylinderLongest, ltbrownMaterial);
+		wheelsBar1.rotateZ(1.57);
+		wheelsBar1.position.set(-.5, -.82, .55);
+
+		var wheelsBar2 = new THREE.Mesh(cylinderLongest, ltbrownMaterial);
+		wheelsBar2.rotateZ(1.57);
+		wheelsBar2.position.set(-.5, -.82, -.55);
+
+		var torus2 = new THREE.TorusGeometry(.35, .06, 15, 15);
+		var wheelSmallFront = new THREE.Mesh(torus2, ltbrownMaterial);
+		wheelSmallFront.position.set(-1.1, -1.1, 0.65); 
+
+		var wheelSmallBack = new THREE.Mesh(torus2, ltbrownMaterial);
+		wheelSmallBack.position.set(-1.1, -1.1, -0.65); 
+
+		var torus3 = new THREE.TorusGeometry(.5, .06, 15, 15);
+		var wheelBigFront = new THREE.Mesh(torus3, ltbrownMaterial);
+		wheelBigFront.position.set(1.1, -1, 0.65); 
+
+		var wheelBigBack = new THREE.Mesh(torus3, ltbrownMaterial);
+		wheelBigBack.position.set(1.1, -1, -0.65); 
+
+		var cylinderSpokesShort = new THREE.CylinderGeometry(.06, .06, .7, 30);
+		var spoke1 = new THREE.Mesh(cylinderSpokesShort, ltbrownMaterial);
+		spoke1.rotateZ(1.57);
+		spoke1.position.set(-1.1, -1.1, 0.65);
+
+		var spoke2 = new THREE.Mesh(cylinderSpokesShort, ltbrownMaterial);
+		spoke2.rotateZ(1.57);
+		spoke2.position.set(-1.1, -1.1, -0.65);
+
+		var spoke3 = new THREE.Mesh(cylinderSpokesShort, ltbrownMaterial);
+		spoke3.position.set(-1.1, -1.1, 0.65);
+
+		var spoke4 = new THREE.Mesh(cylinderSpokesShort, ltbrownMaterial);
+		spoke4.position.set(-1.1, -1.1, -0.65);
+
+		var cylinderSpokesLong = new THREE.CylinderGeometry(.06, .06, 1, 30);
+		var spoke5 = new THREE.Mesh(cylinderSpokesLong, ltbrownMaterial);
+		spoke5.rotateZ(1.57);
+		spoke5.position.set(1.1, -1, 0.65);
+
+		var spoke6 = new THREE.Mesh(cylinderSpokesLong, ltbrownMaterial);
+		spoke6.rotateZ(1.57);
+		spoke6.position.set(1.1, -1, -0.65);
+
+		var spoke7 = new THREE.Mesh(cylinderSpokesLong, ltbrownMaterial);
+		spoke7.position.set(1.1, -1, 0.65);
+
+		var spoke8 = new THREE.Mesh(cylinderSpokesLong, ltbrownMaterial);
+		spoke8.position.set(1.1, -1, -0.65);
+
+		var torus4 = new THREE.TorusGeometry(.1, .08, 15, 15);
+
+		var wheelCenter1 = new THREE.Mesh(torus4, sphereYellowMaterial);
+		wheelCenter1.position.set(-1.1, -1.1, 0.65); 
+
+		var wheelCenter2 = new THREE.Mesh(torus4, sphereYellowMaterial);
+		wheelCenter2.position.set(1.1, -1, 0.65); 
+
+		var wheelCenter3 = new THREE.Mesh(torus4, sphereYellowMaterial);
+		wheelCenter3.position.set(-1.1, -1.1, -0.65); 
+
+		var wheelCenter4 = new THREE.Mesh(torus4, sphereYellowMaterial);
+		wheelCenter4.position.set(1.1, -1, -0.65); 
+
+
 		cabin.add(cabinWindow);
 		cabin.add(windowInterior);
 		cabin.add(slat1);
@@ -248,7 +366,37 @@
 		cabin.add(rooftop);
 		cabin.add(chimneyStem);
 		cabin.add(chimneyBulb);
-
+		cabin.add(light1);
+		cabin.add(light2);
+		cabin.add(light3);
+		cabin.add(light4);
+		cabin.add(light5);
+		cabin.add(light6);
+		cabin.add(light7);
+		cabin.add(light8);
+		cabin.add(light9);
+		cabin.add(light10);
+		cabin.add(light11);
+		cabin.add(light12);
+		cabin.add(cordLine);
+		cabin.add(wheelsBar1);
+		cabin.add(wheelsBar2);
+		cabin.add(wheelSmallFront);
+		cabin.add(wheelSmallBack);
+		cabin.add(wheelBigFront);
+		cabin.add(wheelBigBack);
+		cabin.add(spoke1);
+		cabin.add(spoke2);
+		cabin.add(spoke3);
+		cabin.add(spoke4);
+		cabin.add(spoke5);
+		cabin.add(spoke6);
+		cabin.add(spoke7);
+		cabin.add(spoke8);
+		cabin.add(wheelCenter1);
+		cabin.add(wheelCenter2);
+		cabin.add(wheelCenter3);
+		cabin.add(wheelCenter4);
 
 		// var directionalLight = new THREE.DirectionalLight(0xffffff, 0.1);
 		// scene.add(directionalLight);
@@ -268,8 +416,8 @@
 		scene.add(cabin); // default added at position 0,0,0
 		//cabin.rotation.y = -3.2;
 		// cabin.rotation.y = -1;
-		 // cabin.rotation.x = -1.6;
-		// cabin.rotation.y = -0.6;
+		// cabin.rotation.x = -1.6;
+		// cabin.rotation.y = -0.4;
 		camera.position.z = 5;
 
 		function animate() {
